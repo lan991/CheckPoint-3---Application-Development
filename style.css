@@ -1,0 +1,114 @@
+/* Zerando as margens e padding padrao do navegador pra nao quebrar nada */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 40px 20px;
+}
+
+/* animacao com keyframes pra foto e o texto surgirem devagar de cima pra baixo */
+@keyframes entradaSuave {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cabecalho {
+    text-align: center;
+    margin-bottom: 50px;
+    
+    /* puxando a animacao entradaSuave de 1.2s que fiz ali em cima */
+    animation: entradaSuave 1.2s ease-out;
+}
+
+.foto-perfil {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    border: 4px solid #38bdf8;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+.cabecalho h1 {
+    font-size: 2rem;
+    color: #f8fafc;
+    margin-bottom: 10px;
+}
+
+.cabecalho p {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* estrutura do grid (exigencia do projeto) */
+.grid-cards {
+    /* usando grid em vez de flexbox como pede o enunciado do projeto */
+    display: grid;
+    
+    /* deixando a grade responsiva pro celular, no minimo 280px por card */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    
+    /* espaco entre os cards */
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    
+    /* transition de 0.3s pro efeito do hover nao acontecer seco de uma vez só */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain; /* Mude de cover para contain */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+}
+
+/* efeitos de hover e transform */
+.card:hover {
+    /* muda a cor do fundo e da borda quando passa o mouse por cima */
+    background-color: #334155;
+    border-color: #38bdf8;
+    
+    /* transform pra dar um leve zoom de 3% e subir o card 10px */
+    transform: translateY(-10px) scale(1.03);
+    
+    /* aumenta a sombra no hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
